@@ -3,9 +3,16 @@ import pandas as pd
 f = lambda x: x**3 + 4*x**2 - 10
 
 def bisection_method(a, b, tol, max_iteration):
-  if f(a)*f(b) >= 0:
-    print("No solution exists on this interval")
-    return None
+  if f(a) == 0:
+      print(f"{a} is a root of the function")
+      return a
+  if f(b) == 0:
+      print(f"{b} is a root of the function")
+      return b
+
+  if f(a)*f(b) > 0:
+      print("No solution exists on this interval")
+      return None
 
   a_n = a
   b_n = b
