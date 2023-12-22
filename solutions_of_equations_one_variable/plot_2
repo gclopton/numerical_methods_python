@@ -1,0 +1,29 @@
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import sympy as sp
+
+x = sp.symbols('x')
+
+f_ = sp.cos(x) - x
+f = sp.lambdify(x, f_, 'numpy')
+
+df_ = sp.diff(f_, x)
+df = sp.lambdify(x, df_, 'numpy')
+
+plt.figure(figsize=(8, 6))
+
+x_vals = np.linspace(-10, 10, 400)
+plt.plot(x_vals, f(x_vals), color = "cyan", label = "$f(x) = cos(x) - x$")
+
+plt.axhline(0, linewidth= 0.5)
+plt.axvline(0, linewidth= 0.5)
+plt.grid(linestyle="--", linewidth= 0.5)
+plt.xlim(-10, 11)
+plt.ylim(-10, 11)
+plt.xticks(np.arange(-10, 11, 1))
+plt.yticks(np.arange(-10, 11, 1))
+plt.xlabel("x")
+plt.ylabel("f(x)")
+plt.legend()
+plt.show()
